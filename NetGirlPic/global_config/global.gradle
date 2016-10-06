@@ -16,5 +16,8 @@ ext {
             annotations          : "com.android.support:support-annotations:$support_version",
             design               : "com.android.support:design:$support_version",
             multidex             : 'com.android.support:multidex:1.0.1',
+
+            //日志工具
+            logger                :'com.orhanobut:logger:1.15'
     ]
 }

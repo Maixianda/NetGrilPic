@@ -15,6 +15,64 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+###################### 要添加的东西 ######################
+#不混淆json对应的实体类
+#第三方库不混淆
+#有用到WEBView的JS调用接口
+#生成的时候要删除的代码
+###################### 要添加的东西 ######################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###################### 生成的时候要删除的代码 ######################
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+    public static *** w(...);
+}
+-assumenosideeffects class com.orhanobut.logger.Logger{
+    public static *** d(...);
+    public static *** e(...);
+    public static *** i(...);
+    public static *** w(...);
+    public static *** log(...);
+    public static *** t(...);
+    public static *** v(...);
+    public static *** init(...);
+    public static *** w(...);
+    public static *** wtf(...);
+    public static *** json(...);
+    public static *** xml(...);
+
+}
+
+###################### 生成的时候要删除的代码 ######################
+
 
 ###################### 代码中使用了反射,泛型 ######################
 -keepattributes Signature
@@ -49,36 +107,6 @@
 #使用GSON、fastjson等JSON解析框架所生成的对象类，加入下面的混淆规则即可.假设com.clock.bean包下所有的类都是JSON解析生成对象的类
 #-keep class com.clock.bean.**{*;}//不混淆所有的com.clock.bean包下的类和这些类的所有成员变量
 ###################### 不混淆json对应的实体类 ######################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###################### 要添加的东西 ######################
-#不混淆json对应的实体类
-#第三方库不混淆
-#有用到WEBView的JS调用接口
-###################### 要添加的东西 ######################
 
 
 

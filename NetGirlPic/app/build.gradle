@@ -10,6 +10,7 @@ dependencies {
     compile libs.recyclerView
     compile libs.annotations
     compile libs.design
+    compile libs.logger
 }
 
 repositories { flatDir { dirs 'libs' } }
