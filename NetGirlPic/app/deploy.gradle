@@ -43,7 +43,7 @@ android {
             buildConfigField "int", "LOG_LEVEL", "4" //Log.INFO
             debuggable false
             zipAlignEnabled true
-            shrinkResources true
+            shrinkResources false
             minifyEnabled false //强烈建议使用代码混淆, 用于测试部门、客户测试、上线
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.maidou_dev
@@ -69,7 +69,7 @@ android {
         mxdtest {
             applicationId "com.mxd.test"//测试包名
             manifestPlaceholders = [
-                    appLabel     : "@string/app_name",
+                    appLabel     : "@string/app_name_test",
 //                    UMENG_CHANNEL: "stage",
 //                    PGYER_KEY    : "12451211d5ferfreffdfs"
             ]
@@ -96,7 +96,7 @@ android {
         if (flavor.name != "mxdtest") {
             flavor.applicationId "com.example.maidou.netgirlpic"//正式包名
             flavor.manifestPlaceholders = [
-                    appLabel     : "@string/app_name_test",
+                    appLabel     : "@string/app_name",
 //                    UMENG_CHANNEL: flavor.name,
 //                    PGYER_KEY    : "8a3f06f18afbc3d9df95c73791106443" //正式key
             ]
