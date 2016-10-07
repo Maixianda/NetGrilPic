@@ -78,7 +78,7 @@
 -keepattributes Signature
 -keepattributes EnclosingMethod
 -keepattributes InnerClasses
-###################### 代码中使用了反射 ######################
+###################### 代码中使用了反射,泛型 ######################
 
 
 
