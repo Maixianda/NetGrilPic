@@ -75,7 +75,7 @@ android {
             ]
 //            buildConfigField "boolean", "isStage", "true"
 //            buildConfigField "String", "BASE_URL", '"http://test.lcedai.com/"'
-//            buildConfigField "String", "DATA_PATH", '"LiangCe_Stage"'
+            buildConfigField "String", "DATA_PATH", '"mxd_data_path_test"'//app数据保存目录
             //为方便测试接入测试的leanCloud id/key
 //            buildConfigField "String", "LEAN_CLOUD_ID", '"AsXGHqesNo0paA0qQdW0anXt-gzGzoHsz"'
 //            buildConfigField "String", "LEAN_CLOUD_KEY", '"6NBEasX2Rl0487o7Lmolxtzq"'
@@ -103,7 +103,7 @@ android {
 //            flavor.buildConfigField "boolean", "isStage", "false"
             //上market的时候更换
 //            flavor.buildConfigField "String", "BASE_URL", '"http://app.lcedai.com/"'
-//            flavor.buildConfigField "String", "DATA_PATH", '"LiangCe"'
+            flavor.buildConfigField "String", "DATA_PATH", '"mxd_data_path"'//app数据保存目录
 //            //上market的时候更换正式环境的leanCloud id/key
 //            flavor.buildConfigField "String", "LEAN_CLOUD_ID", '"ixLoLMgpRbk5QEDDUrkg1uUL-gzGzoHsz"'
 //            flavor.buildConfigField "String", "LEAN_CLOUD_KEY", '"ccD3TSLgPbo4XOQrn2DVVinK"'

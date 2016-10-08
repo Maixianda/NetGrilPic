@@ -4,6 +4,8 @@ apply plugin: 'com.android.application'
 dependencies {
     Map<String, String> libs = rootProject.ext.libs
     compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    compile project(':mxdbase')
     compile libs.multidex
     compile libs.v4
     compile libs.v7
