@@ -18,6 +18,9 @@ ext {
             multidex             : 'com.android.support:multidex:1.0.1',
 
             //日志工具
-            logger                :'com.orhanobut:logger:1.15'
+            logger                :'com.orhanobut:logger:1.15',
+
+            yearclass            : 'com.facebook.device.yearclass:yearclass:1.0.1',
+            systembartint        : 'com.readystatesoftware.systembartint:systembartint:1.0.4'
     ]
 }

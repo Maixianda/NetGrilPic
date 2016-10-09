@@ -12,15 +12,57 @@ import com.example.mxdbase.core.event.extend.OnSingleClickListener;
  */
 public class HeaderModel extends BaseObservable {
     private HeaderView mView;
-    private int rightIcon;
-    private int midIcon;
-    private int midTitleColor = 0xFFffffff;
-    private int rightTitleColor = 0xFFffffff;
-    private boolean leftClickable = true;
-    private boolean rightClickable = true;
+    //背景
+    private int background;
+    private int leftBackground = R.drawable.translator;
+    private int rightBackground = R.drawable.translator;
+    private int midBackground = R.drawable.translator;
+    //icon
+    private int leftDrawableLeft = R.drawable.translator;
+    private int rightDrawableLeft = R.drawable.translator;
+    private int midDrawableLeft = R.drawable.translator;
+    //color
+    private int leftTitleColor = R.color.transparent;
+    private int rightTitleColor = R.color.transparent;
+    private int midTitleColor = R.color.transparent;;
+    //clickable
+    private boolean leftTitleClickable = false;
+    private boolean rightTitleClickable = false;
+    private boolean midTitleClickable = false;
+    //title
     private String leftTitle = "";
     private String rightTitle = "";
-    private String midTitle = "良策金服";
+    private String midTitle = "";
+    //textColor
+    private int leftTextColor;
+
+    public int getMidTextColor() {
+        return midTextColor;
+    }
+
+    public void setMidTextColor(int midTextColor) {
+        this.midTextColor = midTextColor;
+    }
+
+    public int getRightTextColor() {
+        return rightTextColor;
+    }
+
+    public void setRightTextColor(int rightTextColor) {
+        this.rightTextColor = rightTextColor;
+    }
+
+    public int getLeftTextColor() {
+
+        return leftTextColor;
+    }
+
+    public void setLeftTextColor(int leftTextColor) {
+        this.leftTextColor = leftTextColor;
+    }
+
+    private int midTextColor;
+    private int rightTextColor;
 
     public HeaderModel(HeaderView mView) {
         this.mView = mView;
@@ -30,7 +72,7 @@ public class HeaderModel extends BaseObservable {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (leftClickable) {
+                if (leftTitleClickable) {
                     mView.onBackClicked();
                 }
             }
@@ -50,28 +92,123 @@ public class HeaderModel extends BaseObservable {
         return new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
-                if (rightClickable) {
+                if (rightTitleClickable) {
                     mView.onMenuClicked();
                 }
             }
         };
     }
 
-
-    public int getRightIcon() {
-        return rightIcon;
+    public HeaderView getmView() {
+        return mView;
     }
 
-    public void setRightIcon(int rightIcon) {
-        this.rightIcon = rightIcon;
+    public void setmView(HeaderView mView) {
+        this.mView = mView;
     }
 
-    public int getMidIcon() {
-        return midIcon;
+    public int getBackground() {
+        return background;
     }
 
-    public void setMidIcon(int midIcon) {
-        this.midIcon = midIcon;
+    public void setBackground(int background) {
+        this.background = background;
+    }
+
+    public int getLeftBackground() {
+        return leftBackground;
+    }
+
+    public void setLeftBackground(int leftBackground) {
+        this.leftBackground = leftBackground;
+    }
+
+    public int getRightBackground() {
+        return rightBackground;
+    }
+
+    public void setRightBackground(int rightBackground) {
+        this.rightBackground = rightBackground;
+    }
+
+    public int getMidBackground() {
+        return midBackground;
+    }
+
+    public void setMidBackground(int midBackground) {
+        this.midBackground = midBackground;
+    }
+
+    public int getLeftDrawableLeft() {
+        return leftDrawableLeft;
+    }
+
+    public void setLeftDrawableLeft(int leftDrawableLeft) {
+        this.leftDrawableLeft = leftDrawableLeft;
+    }
+
+    public int getRightDrawableLeft() {
+        return rightDrawableLeft;
+    }
+
+    public void setRightDrawableLeft(int rightDrawableLeft) {
+        this.rightDrawableLeft = rightDrawableLeft;
+    }
+
+    public int getMidDrawableLeft() {
+        return midDrawableLeft;
+    }
+
+    public void setMidDrawableLeft(int midDrawableLeft) {
+        this.midDrawableLeft = midDrawableLeft;
+    }
+
+    public int getLeftTitleColor() {
+        return leftTitleColor;
+    }
+
+    public void setLeftTitleColor(int leftTitleColor) {
+        this.leftTitleColor = leftTitleColor;
+    }
+
+    public int getRightTitleColor() {
+        return rightTitleColor;
+    }
+
+    public void setRightTitleColor(int rightTitleColor) {
+        this.rightTitleColor = rightTitleColor;
+    }
+
+    public int getMidTitleColor() {
+        return midTitleColor;
+    }
+
+    public void setMidTitleColor(int midTitleColor) {
+        this.midTitleColor = midTitleColor;
+    }
+
+    public boolean isLeftTitleClickable() {
+        return leftTitleClickable;
+    }
+
+    public void setLeftTitleClickable(boolean leftTitleClickable) {
+        this.leftTitleClickable = leftTitleClickable;
+    }
+
+    public boolean isRightTitleClickable() {
+        return rightTitleClickable;
+    }
+
+    public void setRightTitleClickable(boolean rightTitleClickable) {
+        this.rightTitleClickable = rightTitleClickable;
+    }
+
+    public boolean isMidTitleClickable() {
+        return midTitleClickable;
+    }
+
+    public void setMidTitleClickable(boolean midTitleClickable) {
+        this.midTitleClickable = midTitleClickable;
     }
 
     public String getLeftTitle() {
@@ -96,47 +233,6 @@ public class HeaderModel extends BaseObservable {
 
     public void setMidTitle(String midTitle) {
         this.midTitle = midTitle;
-    }
-
-
-    public HeaderView getmView() {
-        return mView;
-    }
-
-    public void setmView(HeaderView mView) {
-        this.mView = mView;
-    }
-
-    public int getMidTitleColor() {
-        return midTitleColor;
-    }
-
-    public void setMidTitleColor(int midTitleColor) {
-        this.midTitleColor = midTitleColor;
-    }
-
-    public int getRightTitleColor() {
-        return rightTitleColor;
-    }
-
-    public void setRightTitleColor(int rightTitleColor) {
-        this.rightTitleColor = rightTitleColor;
-    }
-
-    public boolean isLeftClickable() {
-        return leftClickable;
-    }
-
-    public void setLeftClickable(boolean leftClickable) {
-        this.leftClickable = leftClickable;
-    }
-
-    public boolean isRightClickable() {
-        return rightClickable;
-    }
-
-    public void setRightClickable(boolean rightClickable) {
-        this.rightClickable = rightClickable;
     }
 
     public interface HeaderView {

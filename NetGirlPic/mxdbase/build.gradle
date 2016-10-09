@@ -14,5 +14,7 @@ dependencies {
     compile libs.v7
     compile libs.logger
     compile libs.design
+    compile libs.yearclass
+    compile libs.systembartint
     testCompile 'junit:junit:4.12'
 }

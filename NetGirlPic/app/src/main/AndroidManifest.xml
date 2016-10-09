@@ -14,7 +14,7 @@
         tools:replace="android:label"
         >
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.activity.MainActivity"
             android:label="${appLabel}"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

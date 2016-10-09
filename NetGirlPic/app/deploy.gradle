@@ -37,7 +37,7 @@ android {
             shrinkResources false                    //删除无效的Resource,依赖于minifyEnabled,必须一起用
             minifyEnabled false                     //是否开启混淆,debug包用于开发时使用, 一般不需要混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.maidou_dev
+            //signingConfig signingConfigs.maidou_dev
         }
         release {
             buildConfigField "int", "LOG_LEVEL", "4" //Log.INFO
