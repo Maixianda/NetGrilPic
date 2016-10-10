@@ -25,7 +25,8 @@ public class MainActivity extends BaseFragmentActivtyBinding {
     }
 
     private void setHeader() {
-        //header = new HeaderModel(this);
+        header = new HeaderModel(this);
+        header.setMidTitle("title");
         binding.setHeader(header);
     }
 

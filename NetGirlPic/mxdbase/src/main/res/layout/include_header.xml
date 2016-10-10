@@ -12,7 +12,7 @@
         android:id="@+id/rly_header"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@{header.background}">
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:id="@+id/left_header"
@@ -22,10 +22,10 @@
             android:paddingLeft="@dimen/dp_15"
             android:paddingRight="@dimen/dp_15"
             android:textColor="@{header.leftTextColor}"
-            android:background="@{header.leftBackground}"
             android:clickable="@{header.leftTitleClickable}"
             android:drawableLeft="@{header.leftDrawableLeft}"
             android:onClick="@{header.onBackClickListener()}"
+            android:text="@{header.leftTitle}"
             />
 
         <TextView
@@ -38,10 +38,10 @@
             android:textSize="@dimen/font_20"
             android:maxLines="1"
             android:textColor="@{header.midTextColor}"
-            android:background="@{header.midBackground}"
             android:clickable="@{header.midTitleClickable}"
             android:drawableLeft="@{header.midDrawableLeft}"
-            android:onClick="@{header.onTitleClickListener()}"/>
+            android:onClick="@{header.onTitleClickListener()}"
+            android:text="@{header.midTitle}"/>
 
         <TextView
             android:id="@+id/right_header"
@@ -53,10 +53,10 @@
             android:paddingRight="@dimen/dp_15"
             android:textSize="@dimen/font_15"
             android:textColor="@{header.rightTextColor}"
-            android:background="@{header.rightBackground}"
             android:clickable="@{header.rightTitleClickable}"
             android:drawableLeft="@{header.rightDrawableLeft}"
             android:onClick="@{header.onMenuClickListener()}"
+            android:text="@{header.rightTitle}"
             />
 
     </RelativeLayout>

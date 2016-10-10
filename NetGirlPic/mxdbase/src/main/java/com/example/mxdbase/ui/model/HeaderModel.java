@@ -13,7 +13,6 @@ import com.example.mxdbase.core.event.extend.OnSingleClickListener;
 public class HeaderModel extends BaseObservable {
     private HeaderView mView;
     //背景
-    private int background;
     private int leftBackground = R.drawable.translator;
     private int rightBackground = R.drawable.translator;
     private int midBackground = R.drawable.translator;
@@ -24,7 +23,7 @@ public class HeaderModel extends BaseObservable {
     //color
     private int leftTitleColor = R.color.transparent;
     private int rightTitleColor = R.color.transparent;
-    private int midTitleColor = R.color.transparent;;
+    private int midTitleColor = R.color.colorPrimary;;
     //clickable
     private boolean leftTitleClickable = false;
     private boolean rightTitleClickable = false;
@@ -105,14 +104,6 @@ public class HeaderModel extends BaseObservable {
 
     public void setmView(HeaderView mView) {
         this.mView = mView;
-    }
-
-    public int getBackground() {
-        return background;
-    }
-
-    public void setBackground(int background) {
-        this.background = background;
     }
 
     public int getLeftBackground() {
