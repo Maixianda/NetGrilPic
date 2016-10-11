@@ -1,10 +1,12 @@
 package com.example.mxdbase.ui.model;
 
 import android.databinding.BaseObservable;
+import android.graphics.Color;
 import android.view.View;
 
 import com.example.mxdbase.R;
 import com.example.mxdbase.core.event.extend.OnSingleClickListener;
+import com.example.mxdbase.util.Colors;
 
 
 /**
@@ -12,7 +14,9 @@ import com.example.mxdbase.core.event.extend.OnSingleClickListener;
  */
 public class HeaderModel extends BaseObservable {
     private HeaderView mView;
+
     //背景
+    private int background = Colors.RED_FA4141;
     private int leftBackground = R.drawable.translator;
     private int rightBackground = R.drawable.translator;
     private int midBackground = R.drawable.translator;
@@ -23,7 +27,7 @@ public class HeaderModel extends BaseObservable {
     //color
     private int leftTitleColor = R.color.transparent;
     private int rightTitleColor = R.color.transparent;
-    private int midTitleColor = R.color.colorPrimary;;
+    private int midTitleColor = R.color.colorPrimary;
     //clickable
     private boolean leftTitleClickable = false;
     private boolean rightTitleClickable = false;
@@ -34,6 +38,16 @@ public class HeaderModel extends BaseObservable {
     private String midTitle = "";
     //textColor
     private int leftTextColor;
+    private int midTextColor = Colors.WHITE;
+    private int rightTextColor;
+
+    public int getBackground() {
+        return background;
+    }
+
+    public void setBackground(int background) {
+        this.background = background;
+    }
 
     public int getMidTextColor() {
         return midTextColor;
@@ -59,9 +73,6 @@ public class HeaderModel extends BaseObservable {
     public void setLeftTextColor(int leftTextColor) {
         this.leftTextColor = leftTextColor;
     }
-
-    private int midTextColor;
-    private int rightTextColor;
 
     public HeaderModel(HeaderView mView) {
         this.mView = mView;

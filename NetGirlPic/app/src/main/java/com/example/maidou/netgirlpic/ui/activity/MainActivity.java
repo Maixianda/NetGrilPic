@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 
 import com.example.maidou.netgirlpic.R;
 import com.example.maidou.netgirlpic.databinding.MainActivityBinding;
+import com.example.maidou.netgirlpic.ui.base.BaseActivityBinding;
 import com.example.maidou.netgirlpic.ui.base.BaseFragmentActivtyBinding;
 import com.example.mxdbase.ui.model.HeaderModel;
 
@@ -14,7 +15,7 @@ import com.example.mxdbase.ui.model.HeaderModel;
  * 创建时间:       2016/10/9 9:14
  */
 
-public class MainActivity extends BaseFragmentActivtyBinding {
+public class MainActivity extends BaseActivityBinding {
     MainActivityBinding binding;
     HeaderModel header;
     @Override

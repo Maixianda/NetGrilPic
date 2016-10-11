@@ -22,14 +22,24 @@
             android:layout_height="@dimen/dp_45"
             bind:header="@{header}" />
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rcv"
+            <include
+                android:id="@+id/hint"
+                layout="@layout/include_load" />
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/srv_refresh"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </android.support.v4.widget.SwipeRefreshLayout>
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </FrameLayout>
     </LinearLayout>
 </layout>

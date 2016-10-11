@@ -1,29 +1,27 @@
 package com.example.maidou.netgirlpic.ui.base;
 
-import android.content.Context;
+
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.AttributeSet;
-import android.view.View;
 
 import com.example.maidou.netgirlpic.R;
 import com.example.maidou.netgirlpic.util.UiUtil;
-import com.example.mxdbase.ui.activity.BaseFragmentActivityBinding;
+import com.example.mxdbase.ui.activity.BaseActivity;
 import com.example.mxdbase.ui.model.HeaderModel;
 import com.example.mxdbase.util.Colors;
 import com.example.mxdbase.util.Systems;
 
 /**
- * Created by Administrator on 2016/10/9.
- * 说明:           每个项目独有的BaseFragmentActivity
- * 创建人:         maixianda
- * 创建时间:       2016/10/9 11:44
+ * Created by Aaron on 11/10/15.
+ * Activity 基类 - 无右滑返回上一页效果
  */
+public abstract class BaseActivityBinding extends BaseActivity implements HeaderModel.HeaderView {
+    public HeaderModel header;
 
-public abstract class BaseFragmentActivtyBinding extends BaseFragmentActivityBinding implements HeaderModel.HeaderView{
     @Override
-    public View onCreateView(String name, Context context, AttributeSet attrs) {
+    public void onCreate(Bundle savedInstanceState) {
         Systems.setBarColor(this, Colors.RED_FA4141);
-        return super.onCreateView(name, context, attrs);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -31,4 +29,19 @@ public abstract class BaseFragmentActivtyBinding extends BaseFragmentActivityBin
         super.setContentView(layoutResID);
         UiUtil.bindSwipeRefreshView(this, (SwipeRefreshLayout) findViewById(R.id.srv_refresh));
     }
+
+    @Override
+    public void onBackClicked() {
+    }
+
+    @Override
+    public void onTitleClicked() {
+
+    }
+
+    @Override
+    public void onMenuClicked() {
+    }
+
+
 }

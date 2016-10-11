@@ -68,6 +68,10 @@ public final class Colors {
     public static final int RED_DARK = 0xff8b0000;
 
     /**
+     * 红色
+     */
+    public static final int RED_FA4141 = 0xfffa4141;
+    /**
      * 红色 - 深的 - 半透明
      */
     public static final int RED_DARK_TRANSLUCENT = 0x808b0000;
