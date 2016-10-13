@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.databinding.ViewDataBinding;
 import android.graphics.Color;
+import android.icu.util.IslamicCalendar;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.ViewGroup;
 
 import com.example.mxdbase.R;
-import com.example.mxdbase.databinding.IncludeHeaderBinding;
-import com.example.mxdbase.databinding.IncludeLoadBinding;
 import com.example.mxdbase.databinding.IncludeLoadingBinding;
 import com.example.mxdbase.ui.adapter.v7.ViewHolder.BaseViewHolder;
 import com.example.mxdbase.ui.drawable.MaterialProgressDrawable;
@@ -43,6 +44,67 @@ public abstract class LoadMoreAdapter<T, B extends ViewDataBinding> extends List
             return new BaseViewHolder<>(binding);
         } else {
             return super.onCreateViewHolder(parent, viewType);
+        }
+    }
+
+    private boolean isLastPage = false;
+    @Override
+    public void onBindViewHolder(BaseViewHolder<B> holder, int position) {
+        if (holder.getItemViewType() == R.layout.include_loading)
+        {
+            if (!isLastPage)
+            {
+                LoadMoreData(holder);
+            }
+        }
+        else
+        {
+            super.onBindViewHolder(holder,position);
+        }
+    }
+
+    private void LoadMoreData(BaseViewHolder holder) {
+        loadingView.start();
+        loadMore();
+    }
+
+    @Override
+    public int getItemCount() {
+        return size()+1;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == getItemCount())
+        {
+            return R.layout.include_loading;
+        }
+        else {
+            return super.getItemViewType(position);
+        }
+    }
+
+    public void hideLoadMore() {
+        if (loadingView != null) {
+            loadingView.stop();
+        }
+    }
+
+    public void onFinishLoadMore(boolean lastPage) {
+        isLastPage = lastPage;
+        if (loadingView != null) {
+            loadingView.stop();
+        }
+    }
+
+    public void loadMore() {
+        if (mLoadMoreListener != null) {
+            new Handler(Looper.myLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mLoadMoreListener.onLoadMore();
+                }
+            }, 500);
         }
     }
 
@@ -100,7 +162,7 @@ public abstract class LoadMoreAdapter<T, B extends ViewDataBinding> extends List
             runnable = new Runnable() {
                 @Override
                 public void run() {
-                    //onFinishLoadMore(false);
+                    onFinishLoadMore(false);
                 }
             };
         }
