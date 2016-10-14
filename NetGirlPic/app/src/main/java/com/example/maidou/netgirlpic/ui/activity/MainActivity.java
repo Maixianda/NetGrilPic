@@ -7,6 +7,7 @@ import com.example.maidou.netgirlpic.databinding.MainActivityBinding;
 import com.example.maidou.netgirlpic.ui.base.BaseActivityBinding;
 import com.example.maidou.netgirlpic.ui.base.BaseFragmentActivtyBinding;
 import com.example.mxdbase.ui.model.HeaderModel;
+import com.orhanobut.logger.Logger;
 
 /**
  * Created by Administrator on 2016/10/9.
@@ -22,6 +23,7 @@ public class MainActivity extends BaseActivityBinding {
     public void beforeInitView() {
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity);
         setHeader();
+        Logger.d("111");
 //        setFooter();
     }
 
