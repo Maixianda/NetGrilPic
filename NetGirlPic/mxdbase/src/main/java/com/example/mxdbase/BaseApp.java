@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.example.mxdbase.util.CrashHandler;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -12,7 +13,7 @@ import com.orhanobut.logger.Logger;
  */
 
 public class BaseApp extends Application {
-    private static BaseApp APP;
+    private static  BaseApp APP;
 
     public BaseApp() {
         APP = this;
@@ -35,7 +36,11 @@ public class BaseApp extends Application {
         super.onCreate();
 
         APP = this;
+        //初始化日志tag
+        Logger.init("mxdbase");
 
+        //初始化错误收集
+        CrashHandler.init(new CrashHandler(getApplicationContext()));
         //TODO: uncomment this to print the log message about the lifecycle of activities.
         //监听应用程序activity的各个生命周期
 //        registerActivityLifecycleCallbacks(new LifecycleLoggingCallbacks());
