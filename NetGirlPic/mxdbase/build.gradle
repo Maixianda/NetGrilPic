@@ -1,5 +1,6 @@
 apply from :'../global_config/global_lib.gradle'
 apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     dataBinding {
@@ -16,5 +17,9 @@ dependencies {
     compile libs.design
     compile libs.yearclass
     compile libs.systembartint
+    compile libs.leakcanary
+    compile libs.blockcanary
+    compile libs.dagger
+    apt 'com.google.dagger:dagger-compiler:2.0'
     testCompile 'junit:junit:4.12'
 }
