@@ -13,6 +13,11 @@ dependencies {
     compile libs.annotations
     compile libs.design
     compile libs.logger
+    compile libs.retrofit
+    compile libs.gson
+    compile libs.convertergson
+    compile libs.adapterrxjava
+    compile libs.okhttp
 }
 
 repositories { flatDir { dirs 'libs' } }
