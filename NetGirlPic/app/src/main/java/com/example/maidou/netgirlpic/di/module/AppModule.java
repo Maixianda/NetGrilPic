@@ -3,6 +3,7 @@ package com.example.maidou.netgirlpic.di.module;
 import com.example.maidou.netgirlpic.AppContext;
 import com.example.maidou.netgirlpic.di.ContextLife;
 import com.example.maidou.netgirlpic.module.http.RetrofitHelper;
+import com.example.mxdbase.BaseApp;
 
 import javax.inject.Singleton;
 
@@ -19,7 +20,6 @@ import retrofit2.Retrofit;
 @Module
 public class AppModule {
     private final AppContext appContext;
-
 
     public AppModule(AppContext application) {
         this.appContext = application;

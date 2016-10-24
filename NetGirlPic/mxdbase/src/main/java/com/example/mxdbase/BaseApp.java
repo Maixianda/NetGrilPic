@@ -16,7 +16,7 @@ import com.squareup.leakcanary.LeakCanary;
  */
 
 public class BaseApp extends Application {
-    private static  BaseApp APP;
+    protected static  BaseApp APP;
 
     public BaseApp() {
         APP = this;
@@ -64,12 +64,6 @@ public class BaseApp extends Application {
         super.onTerminate();
     }
 
-    // TODO: 2016/10/17 10:06 不是很懂 AppComponent 是什么
-//    public static AppComponent getAppComponent(){
-//        return DaggerAppComponent.builder()
-//                .appModule(new AppModule(instance))
-//                .build();
-//    }
 
     private final class LifecycleLoggingCallbacks implements ActivityLifecycleCallbacks {
         private final String TAG = "Lifecycle";
