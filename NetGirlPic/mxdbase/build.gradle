@@ -16,5 +16,6 @@ dependencies {
     compile libs.design
     compile libs.yearclass
     compile libs.systembartint
+    compile libs.leakcanary
     testCompile 'junit:junit:4.12'
 }
