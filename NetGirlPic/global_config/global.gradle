@@ -24,5 +24,20 @@ ext {
             systembartint        : 'com.readystatesoftware.systembartint:systembartint:1.0.4',
             //内存泄漏检测
             leakcanary           : 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+            systembartint        : 'com.readystatesoftware.systembartint:systembartint:1.0.4',
+            //内存泄露检测工具
+            leakcanary           : 'com.squareup.leakcanary:leakcanary-android:1.4-beta2',
+            //初始化过度绘制检测
+            blockcanary          : 'com.github.markzhai:blockcanary-android:1.3.1',
+
+            dagger               : 'com.google.dagger:dagger:2.0',
+            annotation           : 'org.glassfish:javax.annotation:10.0-b28',
+            retrofit             : 'com.google.code.gson:gson:2.4',
+            gson                 : 'com.squareup.retrofit2:retrofit:2.0.2',
+            convertergson        : 'com.squareup.retrofit2:converter-gson:2.0.2',
+            adapterrxjava        : 'com.squareup.retrofit2:adapter-rxjava:2.0.2',
+            okhttp               : 'com.squareup.okhttp3:okhttp:3.2.0',
+            //为"单Activity ＋ 多Fragment","多模块Activity + 多Fragment"架构而生的Fragmentation https://github.com/YoKeyword/Fragmentation/
+            Fragmentation        : 'me.yokeyword:fragmentation:0.7.9'
     ]
 }

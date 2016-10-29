@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.example.mxdbase.util.CrashHandler;
+import com.github.moduth.blockcanary.BlockCanary;
+import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.orhanobut.logger.Logger;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by maidou on 2016/10/7.
@@ -12,7 +16,7 @@ import com.orhanobut.logger.Logger;
  */
 
 public class BaseApp extends Application {
-    private static BaseApp APP;
+    protected static  BaseApp APP;
 
     public BaseApp() {
         APP = this;
@@ -35,6 +39,17 @@ public class BaseApp extends Application {
         super.onCreate();
 
         APP = this;
+        //初始化日志tag
+        Logger.init("mxdbase");
+
+        //初始化错误收集
+        CrashHandler.init(new CrashHandler(getApplicationContext()));
+
+        //初始化内存泄露工具
+        LeakCanary.install(this);
+
+        //初始化检测过度绘制
+        BlockCanary.install(this,new BlockCanaryContext()).start();
 
         //TODO: uncomment this to print the log message about the lifecycle of activities.
         //监听应用程序activity的各个生命周期
@@ -48,6 +63,7 @@ public class BaseApp extends Application {
     public void onTerminate() {
         super.onTerminate();
     }
+
 
     private final class LifecycleLoggingCallbacks implements ActivityLifecycleCallbacks {
         private final String TAG = "Lifecycle";

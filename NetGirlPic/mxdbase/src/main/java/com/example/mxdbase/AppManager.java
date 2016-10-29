@@ -200,6 +200,7 @@ public class AppManager {
             finishAllActivity();
         } catch (Exception e) {
         } finally {
+            android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(0);
         }
     }
