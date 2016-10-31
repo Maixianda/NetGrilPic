@@ -3,9 +3,6 @@ package com.example.maidou.netgirlpic;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.example.maidou.netgirlpic.di.Component.AppComponent;
-import com.example.maidou.netgirlpic.di.Component.DaggerAppComponent;
-import com.example.maidou.netgirlpic.di.module.AppModule;
 import com.example.mxdbase.BaseApp;
 
 /**
@@ -35,12 +32,5 @@ public class AppContext extends BaseApp {
      */
     public static AppContext me() {
         return BaseApp.me();
-    }
-
-    // TODO: 2016/10/17 10:06 不是很懂 AppComponent 是什么
-    public static AppComponent getAppComponent(){
-        return DaggerAppComponent.builder()
-                .appModule(new AppModule((AppContext)APP))
-                .build();
     }
 }
