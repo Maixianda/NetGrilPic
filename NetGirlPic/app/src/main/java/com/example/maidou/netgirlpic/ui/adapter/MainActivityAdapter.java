@@ -2,9 +2,9 @@ package com.example.maidou.netgirlpic.ui.adapter;
 
 import android.app.Activity;
 
+import com.example.maidou.netgirlpic.Entity.Item;
 import com.example.maidou.netgirlpic.R;
 import com.example.maidou.netgirlpic.databinding.ItemIvBinding;
-import com.example.maidou.netgirlpic.dto.MainDto;
 import com.example.mxdbase.core.image.PhotoLoader;
 import com.example.mxdbase.ui.adapter.v7.ListAdapter;
 import com.example.mxdbase.ui.adapter.v7.ViewHolder.BaseViewHolder;
@@ -16,7 +16,7 @@ import com.example.mxdbase.ui.adapter.v7.ViewHolder.BaseViewHolder;
  * 创建时间:       2016/10/11 11:42
  */
 
-public class MainActivityAdapter extends ListAdapter<MainDto.ResultBean.ItemsBean,ItemIvBinding>{
+public class MainActivityAdapter extends ListAdapter<Item,ItemIvBinding>{
     private Activity mActivity;
     public MainActivityAdapter(Activity context) {
         super(context);
@@ -25,10 +25,10 @@ public class MainActivityAdapter extends ListAdapter<MainDto.ResultBean.ItemsBea
 
     @Override
     public void onBindViewBinding(BaseViewHolder<ItemIvBinding> vh, int position) {
-        MainDto.ResultBean.ItemsBean itemsBean = get(position);
+        Item items = get(position);
         PhotoLoader.display(vh.getBinding().iv,
-                itemsBean.getCover().get(position).getUrl(),
-                getContext().getResources().getDrawable(R.drawable.ic_product_loading));
+                items.getResult().getItems().get(0).getCover().get(position).getUrl(),
+                getContext().getResources().getDrawable(R.drawable.ic_img_loading));
     }
 
     @Override

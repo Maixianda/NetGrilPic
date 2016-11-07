@@ -32,11 +32,15 @@ ext {
 
             dagger               : 'com.google.dagger:dagger:2.0',
             annotation           : 'org.glassfish:javax.annotation:10.0-b28',
-            retrofit             : 'com.google.code.gson:gson:2.4',
-            gson                 : 'com.squareup.retrofit2:retrofit:2.0.2',
-            convertergson        : 'com.squareup.retrofit2:converter-gson:2.0.2',
+            gson                 : 'com.google.code.gson:gson:2.4',
+            retrofit202          : 'com.squareup.retrofit2:retrofit:2.0.2',
+            retrofit200          : 'com.squareup.retrofit:retrofit:2.0.0-beta2',
+            convertergson202     : 'com.squareup.retrofit2:converter-gson:2.0.2',
+            convertergson200     : 'com.squareup.retrofit:converter-gson:2.0.0-beta2',
             adapterrxjava        : 'com.squareup.retrofit2:adapter-rxjava:2.0.2',
             okhttp               : 'com.squareup.okhttp3:okhttp:3.2.0',
+            //retrofit请求以及响应的打印
+            okhttpLogging        : "com.squareup.okhttp:logging-interceptor:2.7.0",
             //图片加载工具
             glide                : 'com.github.bumptech.glide:glide:3.6.1',
 

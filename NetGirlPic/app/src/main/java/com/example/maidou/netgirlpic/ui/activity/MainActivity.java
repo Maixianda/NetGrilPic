@@ -3,13 +3,18 @@ package com.example.maidou.netgirlpic.ui.activity;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
+import com.example.maidou.netgirlpic.Entity.Item;
 import com.example.maidou.netgirlpic.R;
 import com.example.maidou.netgirlpic.databinding.MainActivityBinding;
+import com.example.maidou.netgirlpic.dto.Bean.MainBean;
+import com.example.maidou.netgirlpic.http.APICallback;
 import com.example.maidou.netgirlpic.ui.adapter.MainActivityAdapter;
 import com.example.maidou.netgirlpic.ui.base.BaseActivityBinding;
-import com.example.maidou.netgirlpic.ui.base.BaseFragmentActivtyBinding;
+
+import com.example.maidou.netgirlpic.util.GirlPicServiceUtil;
 import com.example.mxdbase.ui.model.HeaderModel;
-import com.orhanobut.logger.Logger;
+
+import retrofit.Call;
 
 /**
  * Created by Administrator on 2016/10/9.
@@ -49,7 +54,23 @@ public class MainActivity extends BaseActivityBinding {
 
     @Override
     public void initData() {
+        Call<MainBean> call = GirlPicServiceUtil.me().getService().getGirlPicCall(1,10);
+        call.enqueue(new APICallback<MainBean>() {
+            @Override
+            public void onSuccess(MainBean mainBean) {
 
+            }
+
+            @Override
+            public void onFailed(String message) {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        });
     }
 
     @Override

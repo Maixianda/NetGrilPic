@@ -13,14 +13,14 @@ dependencies {
     compile libs.annotations
     compile libs.design
     compile libs.logger
-    compile libs.retrofit
+    compile libs.retrofit200
     compile libs.gson
-    compile libs.convertergson
+    compile libs.convertergson200
     compile libs.adapterrxjava
-    compile libs.okhttp
     compile libs.dagger
     compile libs.annotation
     compile libs.Fragmentation
+    compile libs.okhttpLogging
     apt 'com.google.dagger:dagger-compiler:2.0'
 
     provided 'org.glassfish:javax.annotation:10.0-b28'
