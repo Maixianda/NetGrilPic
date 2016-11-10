@@ -13,6 +13,7 @@ import com.example.maidou.netgirlpic.ui.base.BaseActivityBinding;
 
 import com.example.maidou.netgirlpic.util.GirlPicServiceUtil;
 import com.example.mxdbase.ui.model.HeaderModel;
+import com.orhanobut.logger.Logger;
 
 import retrofit.Call;
 
@@ -58,7 +59,7 @@ public class MainActivity extends BaseActivityBinding {
         call.enqueue(new APICallback<MainBean>() {
             @Override
             public void onSuccess(MainBean mainBean) {
-
+                Logger.d(mainBean);
             }
 
             @Override

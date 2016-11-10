@@ -158,4 +158,18 @@ public class MainBean {
         this.items = items;
     }
 
+    @Override
+    public String toString() {
+        return "MainBean{" +
+                "maxPage=" + maxPage +
+                ", pageNum=" + pageNum +
+                ", firstPageBarNum=" + firstPageBarNum +
+                ", endPageBarNum=" + endPageBarNum +
+                ", pageSize=" + pageSize +
+                ", total=" + total +
+                ", requestUrl='" + requestUrl + '\'' +
+                ", showMaxPageBar=" + showMaxPageBar +
+                ", items=" + items +
+                '}';
+    }
 }

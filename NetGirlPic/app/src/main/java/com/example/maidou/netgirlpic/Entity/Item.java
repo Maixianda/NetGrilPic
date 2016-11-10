@@ -32,7 +32,21 @@ public class Item {
         this.result = result;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "result=" + result +
+                '}';
+    }
+
     public static class ResultBean {
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "items=" + items +
+                    '}';
+        }
+
         /**
          * articleId : 4447
          * categoryId :
@@ -555,6 +569,15 @@ public class Item {
                 private String url;
                 private String item;
                 private String fileName;
+
+                @Override
+                public String toString() {
+                    return "CoverBean{" +
+                            "url='" + url + '\'' +
+                            ", item='" + item + '\'' +
+                            ", fileName='" + fileName + '\'' +
+                            '}';
+                }
 
                 public String getUrl() {
                     return url;
