@@ -1,1 +1,1 @@
-include ':app', ':mxdbase', ':geeknews'
+include ':app', ':mxdbase', ':geeknews', ':materialdesignedittext'

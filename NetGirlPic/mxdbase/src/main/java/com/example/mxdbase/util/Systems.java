@@ -77,6 +77,15 @@ public class Systems {
     }
 
     /**
+     * sp to px
+     * @param context
+     * @param sp
+     * @return
+     */
+    public static float spToPix(Context context,float sp) {
+        return  applyDimension(context,TypedValue.COMPLEX_UNIT_DIP,sp);
+    }
+    /**
      * 单位转换
      *
      * @param context

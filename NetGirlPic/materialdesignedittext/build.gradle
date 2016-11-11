@@ -1,0 +1,153 @@
+apply plugin: 'com.android.application'
+
+android {
+    dataBinding {
+        enabled = true
+    }
+    compileSdkVersion rootProject.ext.compile_sdk_version
+    buildToolsVersion rootProject.ext.build_tools_version
+
+    defaultConfig {
+        applicationId "com.draggerdemo.maidou.geeknews"
+        //真正的包名在deploy.gradle
+        applicationId "com.example.maidou.netgirlpic"
+        minSdkVersion rootProject.ext.min_sdk_version
+        targetSdkVersion rootProject.ext.target_sdk_version
+        versionCode 1
+        versionName "1.0.0"
+        // Enabling multidex support.
+        multiDexEnabled true
+
+    }
+
+    signingConfigs {
+        maidou_dev {
+            storeFile file("NetGirlPic.jks")
+            storePassword "624368"
+            keyAlias "maidou"
+            keyPassword "624368"
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "int", "LOG_LEVEL", "2" //Log.VERBOSE
+            debuggable true                          //是否可以调试
+            zipAlignEnabled false                    //我们都知道APK的MIME其实就是一个Zip压缩文件，通过Zipalign可以让你的应用程序运行更快，Android123猜测从原理上来讲应该是优化Zip文件的解压速度，毕竟这个工具的文件名为zip对齐。
+            shrinkResources false                    //删除无效的Resource,依赖于minifyEnabled,必须一起用
+            minifyEnabled false                     //是否开启混淆,debug包用于开发时使用, 一般不需要混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.maidou_dev
+        }
+        release {
+            buildConfigField "int", "LOG_LEVEL", "4" //Log.INFO
+            debuggable false
+            zipAlignEnabled true
+            shrinkResources false
+            minifyEnabled false //强烈建议使用代码混淆, 用于测试部门、客户测试、上线
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.maidou_dev
+        }
+        //命名各apk
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                def mApplicationId = variant.mergedFlavor.applicationId + (variant.buildType.applicationIdSuffix == null ? "" : variant.buildType.applicationIdSuffix)
+                def mVersionName = variant.mergedFlavor.versionName + (variant.buildType.versionNameSuffix == null ? "" : variant.buildType.versionNameSuffix)
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "${variant.buildType.name}_${variant.productFlavors[0].name}_${mApplicationId}_${defaultConfig.versionCode}_v${mVersionName}.apk"
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        }
+
+        debug {
+            buildConfigField "int", "LOG_LEVEL", "2" //Log.VERBOSE
+            debuggable true                          //是否可以调试
+            zipAlignEnabled false                    //我们都知道APK的MIME其实就是一个Zip压缩文件，通过Zipalign可以让你的应用程序运行更快，Android123猜测从原理上来讲应该是优化Zip文件的解压速度，毕竟这个工具的文件名为zip对齐。
+            shrinkResources false                    //删除无效的Resource,依赖于minifyEnabled,必须一起用
+            minifyEnabled false                     //是否开启混淆,debug包用于开发时使用, 一般不需要混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.maidou_dev
+        }
+        release {
+            buildConfigField "int", "LOG_LEVEL", "4" //Log.INFO
+            debuggable false
+            zipAlignEnabled true
+            shrinkResources false
+            minifyEnabled false //强烈建议使用代码混淆, 用于测试部门、客户测试、上线
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.maidou_dev
+        }
+        //命名各apk
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                def mApplicationId = variant.mergedFlavor.applicationId + (variant.buildType.applicationIdSuffix == null ? "" : variant.buildType.applicationIdSuffix)
+                def mVersionName = variant.mergedFlavor.versionName + (variant.buildType.versionNameSuffix == null ? "" : variant.buildType.versionNameSuffix)
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "${variant.buildType.name}_${variant.productFlavors[0].name}_${mApplicationId}_${defaultConfig.versionCode}_v${mVersionName}.apk"
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        }
+    }
+    // 多渠道
+    productFlavors {
+        /**
+         * 测试服务器
+         */
+        mxdtest {
+            applicationId "com.mxd.test"//测试包名
+            manifestPlaceholders = [
+                    appLabel     : "@string/app_name_test",
+//                    UMENG_CHANNEL: "stage",
+//                    PGYER_KEY    : "12451211d5ferfreffdfs"
+            ]
+//            buildConfigField "boolean", "isStage", "true"
+//            buildConfigField "String", "BASE_URL", '"http://test.lcedai.com/"'
+            buildConfigField "String", "DATA_PATH", '"mxd_data_path_test"'//app数据保存目录
+            //为方便测试接入测试的leanCloud id/key
+//            buildConfigField "String", "LEAN_CLOUD_ID", '"AsXGHqesNo0paA0qQdW0anXt-gzGzoHsz"'
+//            buildConfigField "String", "LEAN_CLOUD_KEY", '"6NBEasX2Rl0487o7Lmolxtzq"'
+        }
+
+        /**
+         * 后边的全都是生产环境, 一行一个渠道包
+         *
+         */
+        production {}
+        //xiaomi{}
+        //qihu360{}
+        //yingyongbao{}
+    }
+    //为生产环境配置所有的渠道包
+    productFlavors.all { flavor ->
+        if (flavor.name != "mxdtest") {
+            flavor.applicationId "com.example.maidou.netgirlpic"//正式包名
+            flavor.manifestPlaceholders = [
+                    appLabel     : "@string/app_name",
+//                    UMENG_CHANNEL: flavor.name,
+//                    PGYER_KEY    : "8a3f06f18afbc3d9df95c73791106443" //正式key
+            ]
+//            flavor.buildConfigField "boolean", "isStage", "false"
+            //上market的时候更换
+//            flavor.buildConfigField "String", "BASE_URL", '"http://app.lcedai.com/"'
+            flavor.buildConfigField "String", "DATA_PATH", '"mxd_data_path"'//app数据保存目录
+//            //上market的时候更换正式环境的leanCloud id/key
+//            flavor.buildConfigField "String", "LEAN_CLOUD_ID", '"ixLoLMgpRbk5QEDDUrkg1uUL-gzGzoHsz"'
+//            flavor.buildConfigField "String", "LEAN_CLOUD_KEY", '"ccD3TSLgPbo4XOQrn2DVVinK"'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.0'
+
+    compile project(':mxdbase')
+    compile libs.multidex
+}
