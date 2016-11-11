@@ -1,3 +1,5 @@
+package com.draggerdemo.maidou.materialdesignedittext;
+
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
